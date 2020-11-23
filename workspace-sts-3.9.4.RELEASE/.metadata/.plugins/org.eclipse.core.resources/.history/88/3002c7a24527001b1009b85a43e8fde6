@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录页面</title>
+<script type="text/javascript">
+	/* window.onload = function(){
+		
+		var btnEle = document.getElementById("btnSub");
+		//1.取用户名值
+		btnEle.onclick = function(){
+			var uname = document.getElementById("username").value;
+			if(uname == null || "" == uname){
+			//	alert("用户名不能为空，请重新输入！");
+	//		var yOn = confirm("确认删除吗？");
+	//		alert(yOn);
+				//取消默认行为
+				return false;
+			}
+		}
+	} */
+
+</script>
+
+</head>
+<body>
+	<h1>登录</h1>
+	<form action="LoginServlet">
+		<table border="1">
+			<tr>
+				<td>用户名：</td>
+				<td><input type="text" name="username" id="username"><br/></td>
+			</tr>
+			<tr>
+				<td align="right">密码：</td>
+				<td><input type="password" name="pwd" ><br/></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="reset">
+					<input id="btnSub" type="submit" value="登录"><br/>
+				</td>
+			</tr>
+		</table>
+		
+		<a href="../index.html">回首页</a>
+	</form>
+	
+</body>
+</html>

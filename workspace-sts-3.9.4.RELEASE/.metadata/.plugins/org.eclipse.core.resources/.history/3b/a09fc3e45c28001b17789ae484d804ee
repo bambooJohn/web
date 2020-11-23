@@ -1,0 +1,5 @@
+package com.bambooJohn.bean;
+
+public class User {
+
+}

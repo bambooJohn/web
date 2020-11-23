@@ -1,0 +1,22 @@
+package com.bambooJohn.test02.jdbc;
+
+import org.junit.Test;
+
+/**
+ * 步骤：
+ * 1、注册驱动
+ * 三部曲：（1）把jar复制到libs （2）把jar添加到Build path中（3）加载驱动类
+ * 2、建立连接
+ * 
+ * 
+ * @author 10338
+ *
+ */
+public class TestJDBC2 {
+
+	@Test
+	public void test2() {
+		
+	}
+	
+}

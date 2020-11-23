@@ -1,0 +1,32 @@
+package com.bambooJohn.test05;
+
+import java.sql.SQLException;
+
+import org.junit.Test;
+
+public class TestJDBCToolsV1 {
+
+	@Test
+	public void test01() throws SQLException {
+		
+		//添加一个部门到t_department
+		String sql = "insert into t_department values(NULL,?,?)";
+		
+		int len = JDBCToolsV1.update(sql, "测试部门1","测试部门简介1");
+		System.out.println(len > 0 ? "success" : "fail");
+	}
+	
+	@Test
+	public void test02() throws SQLException {
+		
+		String sql1 = "UPDATE t_department set description = '测试部门简介1' WHERE did = '9112'";
+		String sql2 = "UPDATE t_department set description = 'zz' did = '9113'";
+		
+		//希望它俩构成一个事务
+		JDBCToolsV1.update(sql1);
+		JDBCToolsV1.update(sql2);
+		
+		
+	}
+	
+}

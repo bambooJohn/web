@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	/*
+		* window.onload与$(function(){})区别
+			* 前者当前文档完全加载后执行，后者是当前文档绘制成功后执行。
+			* 前者只能书写一次，后者可以书写多次。
+			* 前者语法只有一种，后者有两种语法。
+		* $(function(){}):当前文档绘制成功后执行
+		* window.onload:当前文档完全加载后执行。
+	
+	*/
+	window.onload = function(){
+		alert("onload1");
+	}
+	window.onload = function(){
+		alert("onload2");
+	}
+	$(function(){
+		alert("jquery1");
+	});
+	$(function(){
+		alert("jquery2");
+	});
+	$(document).ready(function(){
+		alert("3")
+	});
+</script>
+</head>
+<body>
+
+	<img src="img/boss.jpg" />
+
+</body>
+</html>

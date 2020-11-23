@@ -1,0 +1,81 @@
+package com.bambooJohn.test03;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import org.junit.Test;
+
+/**
+ * 事务：
+ * 
+ * 需求：
+ * 	删除某个订单
+ * 	（1）删除订单表的记录
+ * 	（2）删除订单明细表的记录
+ * 
+ * 	如果在订单明细表建立外键时，指定on delete cascade，那么在删除订单时，会自动把对应的订单明细表的记录删除。
+ *  如果没有建立外键，那么在删除订单时，不会自动对应订单明细表的记录。那么就需要程序员再编写对应的sql去删除对应的订单明细表
+ * 
+ * 假如，现在要删除“15294258455691”的订单
+ * 
+ * @author 10338
+ *
+ */
+public class TestTransaction {
+
+	@Test
+	public void test01() throws Exception{
+		//1、注册驱动
+		Class.forName("com.mysql.jdbc.Driver");
+		
+		//2、获取连接
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/day04_test01_bookstore", "root", "123456");
+		
+		conn.setAutoCommit(false);
+		//3、编写sql
+		String sql1 = "delete from orders where id = ?";
+		String sql2 = "delete from order_items where order_id = ?";
+		
+		//4、创建PreparedStatement
+		PreparedStatement pst1 = conn.prepareStatement(sql1);
+		pst1.setObject(1, "15294258455691");
+		
+		PreparedStatement pst2 = conn.prepareStatement(sql2);
+		pst2.setObject(1, "15294258455691");
+		
+		boolean flag = true; // 假设成功
+		//5、执行sql
+		try {
+			int len1 = pst1.executeUpdate();
+			System.out.println("len1:" + len1);
+			if(!(len1 > 0)) {
+				flag = false;
+			}else {
+				int len2 = pst2.executeUpdate();
+				System.out.println("len2:" + len2);
+				flag = len2 > 0 ? true : false ;
+			}
+			
+			if(flag) {
+				System.out.println("成功了");
+				conn.commit();
+			}else {
+				System.out.println("失败了");
+				conn.rollback();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("异常了");
+			conn.rollback();
+		}
+		
+		
+		//6、关闭
+		pst1.close();
+		pst2.close();
+	//	conn.setAutoCommit(true);
+		conn.close();
+	}
+	
+}

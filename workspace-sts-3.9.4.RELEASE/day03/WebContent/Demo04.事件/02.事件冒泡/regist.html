@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册页面</title>
+<script type="text/javascript" src="../../script/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+	/*
+		* change事件：当元素失去焦点且文本改变时触发
+	*/
+	$(function(){
+		//输入用户名后，验证用户名是否已存在（zhangsan）
+		$("#username").change(function(){
+			var $uname = $(this).val();
+			if("zhangsan" == $uname){
+				$("#unameMsg").text("该用户名已被注册，请重新输入！").css("color","red");
+			}else{
+				$("#unameMsg").text("该用户名可以使用！").css("color","green");
+			}
+		});
+	});
+
+</script>
+</head>
+<body>
+
+	<h1>注册</h1>
+	<form action="regist_success.html">
+		用户名：<input type="text" name="username" id="username">
+		<span id="unameMsg"></span>
+		<br/>
+		密&emsp;码：<input type="password" name="pwd"><br/>
+		<input type="reset">
+		<input type="submit" value="注册"><br/>
+	</form>
+	<a href="../index.html">回首页</a>
+</body>
+</html>

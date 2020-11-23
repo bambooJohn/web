@@ -1,0 +1,31 @@
+package com.bambooJohn.test01.jdbc;
+
+/**
+ * java.sql包和javax.sql包
+ * JDBC是代表一组公共的接口。
+ * JDBC中的这些公共接口和DBMS数据库厂商提供的实现类（驱动jar），是为了实现Java代码可以连接DBMS，并且操作它里面的数据而声明的。
+ * 
+ * 常用的接口：
+ * Connection:连接
+ * Statement和PreparedStatement:增删改查
+ * ResultSet:接收和处理查询结果
+ * 
+ * 辅助的类：
+ * DriverManager:驱动管理类。
+ * 
+ * JDBC程序的编写步骤：
+ * 1、注册驱动（如果这一步不做，编译不会报错，运行会报找不到驱动类等异常）
+ * 2、连接数据库：
+ * 		DriverManager和Connection
+ * 3、操作数据库
+ * （1）增、删、改：Statement或PreparedStatement
+ * （2）查询：Statement或PreparedStatement
+ * 			ResultSet
+ * 4、断开连接，关闭对应各种资源
+ * 
+ * @author 10338
+ *
+ */
+public class TestJDBC {
+
+}

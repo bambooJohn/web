@@ -1,0 +1,58 @@
+package com.bambooJohn.test05;
+
+import java.io.IOException;
+import java.security.spec.DSAGenParameterSpec;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import com.alibaba.druid.pool.DruidDataSourceFactory;
+
+/**
+ * 
+ * 
+ * 
+ * 
+ * @author 10338
+ *
+ */
+public class JDBCToolsV1 {
+
+	private static DataSource ds;
+	
+	static {
+		Properties pro = new Properties();
+		try {
+			pro.load(JDBCToolsV1.class.getResourceAsStream("druid.propertis"));
+			try {
+				ds = DruidDataSourceFactory.createDataSource(pro);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static Connection getConnection() throws SQLException {
+		//方式一：DriverManager.getConnection()
+		//方式二：连接池对象.getConnection()
+		return ds.getConnection();
+	}
+	
+	public void free(Connection conn) {
+		if(conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				throw new RuntimeException();
+			}
+		}
+	}
+	
+}

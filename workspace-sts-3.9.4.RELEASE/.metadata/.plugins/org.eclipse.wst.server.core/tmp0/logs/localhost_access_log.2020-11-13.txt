@@ -1,0 +1,1 @@
+0:0:0:0:0:0:0:1 - - [13/Nov/2020:23:48:50 +0800] "POST /day05_tomcat/regist_success.html HTTP/1.1" 404 1015

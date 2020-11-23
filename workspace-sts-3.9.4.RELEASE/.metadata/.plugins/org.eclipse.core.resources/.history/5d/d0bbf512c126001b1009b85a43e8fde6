@@ -1,0 +1,31 @@
+package com.bambooJohn.demo;
+
+public class Demo {
+
+	/**
+	 * 1.请求和响应
+	 * 		* 请求：客户端向服务器
+	 * 			* 类型：HttpServletRequest request
+	 * 			* 定义：代表了客户端向服务器发送的请求报文，该对象由服务器（web容器|Servlet容器）创建，
+	 * 					同时发送给Service(),Service()发送给doGet()或doPost()。
+	 * 			* 作用：
+	 * 				1.获取请求参数
+	 * 				2.获取项目的虚拟路径
+	 * 				3.转发（路径跳转）
+	 * 				4.域对象（哥四个）
+	 * 		* 响应：服务器向客户端
+	 * 			* 类型：HttpServletResponse response
+	 * 			* 定义：代表了服务器向客户端发送的响应报文，该对象由服务器（web容器|Servlet容器）创建，
+	 * 					同时发送给Service(),Service()发送给doGet()或doPost()。
+	 * 			* 作用
+	 * 				1.服务器向客户端做出响应（文本|html）
+	 * 				2.重定向（路径跳转）
+	 * 2.转发和重定向
+	 * 3.Servlet练习（伪登录|伪注册）
+	 * 4.Web应用中路径问题
+	 * 5.Web应用中乱码问题
+	 * 6.项目第二阶段
+	 * 
+	 */
+	
+}

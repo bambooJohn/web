@@ -1,0 +1,15 @@
+package com.bambooJohn.demo;
+
+public class Demo {
+
+	/**
+	 * 1.请求和响应
+	 * 2.转发和重定向
+	 * 3.Servlet练习（伪登录|伪注册）
+	 * 4.Web应用中路径问题
+	 * 5.Web应用中乱码问题
+	 * 6.项目第二阶段
+	 * 
+	 */
+	
+}

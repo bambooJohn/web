@@ -1,0 +1,66 @@
+package com.bambooJohn.test02;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+
+import org.junit.Test;
+
+/**
+ * 批处理：
+ * 	当要执行某条sql语句很多次。
+ * 例如：
+ * （1）批量添加测试数据
+ * （2）当用户购买了东西后，一个订单中有很多的商品，那么就会涉及到
+ * a、在订单明细表中意味着要批量插入多条记录
+ * b、批量修改商品表的销量和库存量
+ * ...
+ * 
+ * 如何实现批处理呢？
+ * 
+ * 例如：在test库的t_department表中添加1000条的模拟数据
+ * 	部门名称：测试数据i	i对应1---1000
+ *  部门简介：测试简介i	i对应1---1000
+ * 
+ * 
+ * @author 10338
+ *
+ */
+
+public class TestBatch {
+
+	@Test
+	public void test01() throws Exception{
+		
+		long start = System.currentTimeMillis();
+		Class.forName("com.mysql.jdbc.Driver");
+		
+		//2、获取连接
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
+		
+		//3、编写sql
+		String sql = "INSERT INTO t_department VALUES(null,?,?)";
+		
+		//4、创建PreparedStatement
+		PreparedStatement pst = conn.prepareStatement(sql);
+		
+		//5、设置？的值
+		for(int i = 1;i <= 1000;i++) {
+			pst.setObject(1, "测试数据" + i);
+			pst.setObject(2, "测试简介" + i);
+			
+			//不用批处理，设置一次？就执行一次
+			pst.executeUpdate();
+		}
+		
+		//7、关闭
+		pst.close();
+		conn.close();
+		
+		long end = System.currentTimeMillis();
+		System.out.println("耗时：" + (end - start));
+	}
+	
+	
+}

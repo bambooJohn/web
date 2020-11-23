@@ -1,0 +1,28 @@
+package com.bambooJohn.test03;
+
+import org.junit.Test;
+
+/**
+ * 事务：
+ * 
+ * 需求：
+ * 	删除某个订单
+ * 	（1）删除订单表的记录
+ * 	（2）删除订单明细表的记录
+ * 
+ * 	如果在订单明细表建立外键时，指定on delete cascade，那么在删除订单时，会自动把对应的订单明细表的记录删除。
+ *  如果没有建立外键，那么在删除订单时，不会自动对应订单明细表的记录。那么就需要程序员再编写对应的sql去删除对应的订单明细表
+ * 
+ * 假如，现在要删除“15294258455691”的订单
+ * 
+ * @author 10338
+ *
+ */
+public class TestTransaction {
+
+	@Test
+	public void test01() {
+		
+	}
+	
+}
