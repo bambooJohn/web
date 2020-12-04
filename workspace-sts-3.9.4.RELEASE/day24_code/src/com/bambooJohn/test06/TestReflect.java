@@ -21,7 +21,18 @@ package com.bambooJohn.test06;
  * 	6、在运行时读取某个类的泛型实参
  * ...
  * 
+ * 	动态的xx
+ * 	静态的xx
  * 
+ * Java语言是静态语言：
+ * 		如果没有反射，Java必须在编译期间确定所有类型。Student stu = new Student();
+ * 		为了Java也支持动态型，在运行期间，确定某个类型的功能，才引入反射机制。准动态语言。
+ * 		只是延迟了确定对象的类型而已。
+ * 
+ * JavaScript,python是动态语言
+ * 
+ * 静态语言：效率高，安全
+ * 动态语言：灵活，不安全，边解释边执行，效率低
  */
 public class TestReflect {
 
