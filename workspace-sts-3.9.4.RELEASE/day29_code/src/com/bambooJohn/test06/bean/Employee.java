@@ -2,30 +2,35 @@ package com.bambooJohn.test06.bean;
 
 import java.util.Date;
 
+/*
+ * 属性不要用基本数据类型，用包装类
+ * 如果属性名与数据库表中的字段名不一致了，在sql中用别名表示
+ * 
+ */
 public class Employee {
 
-	private int eid;
+	private Integer eid;
 	private String ename;
 	private String tel;
 	private String gender;
-	private double salary;
-	private double commission_pct;
+	private Double salary;
+	private Double commission_pct;
 	private Date birthday;
 	private Date hiredate;
-	private int jobId;
+	private Integer jobId;
 	private String email;
-	private int mid;
+	private Integer mid;
 	private String address;
 	private String nativePlace;
-	private int did;
+	private Integer did;
 	
 	public Employee() {
 		super();
 	}
 
-	public Employee(int eid, String ename, String tel, String gender, double salary, double commission_pct,
-			Date birthday, Date hiredate, int jobId, String email, int mid, String address, String nativePlace,
-			int did) {
+	public Employee(Integer eid, String ename, String tel, String gender, Double salary, Double commission_pct,
+			Date birthday, Date hiredate, Integer jobId, String email, Integer mid, String address, String nativePlace,
+			Integer did) {
 		super();
 		this.eid = eid;
 		this.ename = ename;
@@ -43,11 +48,11 @@ public class Employee {
 		this.did = did;
 	}
 
-	public int getEid() {
+	public Integer getEid() {
 		return eid;
 	}
 
-	public void setEid(int eid) {
+	public void setEid(Integer eid) {
 		this.eid = eid;
 	}
 
@@ -75,19 +80,19 @@ public class Employee {
 		this.gender = gender;
 	}
 
-	public double getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 
-	public double getCommission_pct() {
+	public Double getCommission_pct() {
 		return commission_pct;
 	}
 
-	public void setCommission_pct(double commission_pct) {
+	public void setCommission_pct(Double commission_pct) {
 		this.commission_pct = commission_pct;
 	}
 
@@ -107,11 +112,11 @@ public class Employee {
 		this.hiredate = hiredate;
 	}
 
-	public int getJobId() {
+	public Integer getJobId() {
 		return jobId;
 	}
 
-	public void setJobId(int jobId) {
+	public void setJobId(Integer jobId) {
 		this.jobId = jobId;
 	}
 
@@ -123,11 +128,11 @@ public class Employee {
 		this.email = email;
 	}
 
-	public int getMid() {
+	public Integer getMid() {
 		return mid;
 	}
 
-	public void setMid(int mid) {
+	public void setMid(Integer mid) {
 		this.mid = mid;
 	}
 
@@ -147,11 +152,11 @@ public class Employee {
 		this.nativePlace = nativePlace;
 	}
 
-	public int getDid() {
+	public Integer getDid() {
 		return did;
 	}
 
-	public void setDid(int did) {
+	public void setDid(Integer did) {
 		this.did = did;
 	}
 
@@ -162,6 +167,7 @@ public class Employee {
 				+ ", jobId=" + jobId + ", email=" + email + ", mid=" + mid + ", address=" + address + ", nativePlace="
 				+ nativePlace + ", did=" + did + "]";
 	}
+
 	
 	
 	

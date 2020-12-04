@@ -26,8 +26,7 @@ public abstract class BasicDAOImpl<T> {
 		type = (Class) types[0];
 	}
 
-
-
+	//通用的增、删、改方法
 	public int update(String sql,Object... args) throws SQLException {
 		Connection conn = JDBCToolsV3.getConnection();
 		PreparedStatement pst = conn.prepareStatement(sql);
@@ -46,6 +45,7 @@ public abstract class BasicDAOImpl<T> {
 		
 	}
 	
+	//通用的查询，一个T对象
 	public T getBean(String sql,Object... args) throws SQLException, InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException {
 		Connection conn = JDBCToolsV3.getConnection();
 		PreparedStatement pst = conn.prepareStatement(sql);
@@ -85,7 +85,8 @@ public abstract class BasicDAOImpl<T> {
 			//有几列，说明有几个属性
 			//为counts个属性赋值
 			for (int i = 0; i < counts; i++) {
-				Field field = type.getDeclaredField(metaData.getColumnName(i + 1));
+			//	Field field = type.getDeclaredField(metaData.getColumnName(i + 1));//这个是数据库中列的字段名
+				Field field = type.getDeclaredField(metaData.getColumnLabel(i + 1));//要获取JavaBean中属性名，在sql语句中，用别名来代替类的属性名
 				field.setAccessible(true);
 				field.set(t, rs.getObject(i + 1));
 			}
@@ -99,7 +100,7 @@ public abstract class BasicDAOImpl<T> {
 		
 	}
 	
-	
+	//通用的查询，多个T对象
 	public List<T> getBeanList(String sql,Object... args) throws SQLException, InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException {
 		Connection conn = JDBCToolsV3.getConnection();
 		PreparedStatement pst = conn.prepareStatement(sql);
