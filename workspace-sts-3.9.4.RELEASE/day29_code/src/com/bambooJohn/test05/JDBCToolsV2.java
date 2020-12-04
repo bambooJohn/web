@@ -52,8 +52,6 @@ public class JDBCToolsV2 {
 		}
 	}
 	
-	//这个方法只能用于不需要处理事务的情况
-	//增、修改、删除
 	public static int update(String sql,Object... eles) throws SQLException {
 		//获取连接
 		Connection conn = getConnection();
