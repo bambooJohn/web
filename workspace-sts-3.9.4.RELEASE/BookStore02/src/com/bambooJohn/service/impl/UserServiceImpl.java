@@ -14,4 +14,10 @@ public class UserServiceImpl implements UserService{
 		return userDao.getUser(user);
 	}
 
+	@Override
+	public boolean checkUserName(String username) {
+		// TODO Auto-generated method stub
+		return userDao.checkUserName(username);
+	}
+
 }

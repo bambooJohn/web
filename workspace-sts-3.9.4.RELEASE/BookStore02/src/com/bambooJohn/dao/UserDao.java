@@ -10,5 +10,13 @@ public interface UserDao {
 	 * 
 	 */
 	User getUser(User user);
+
+	/**
+	 * 检查用户名是否存在
+	 * 		true:用户名存在
+	 * 		false:用户名不存在
+	 * sql: select * from users where username = ?
+	 */
+	boolean checkUserName(String username);
 	
 }

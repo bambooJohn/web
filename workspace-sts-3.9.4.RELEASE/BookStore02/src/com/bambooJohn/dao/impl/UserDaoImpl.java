@@ -13,4 +13,12 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao{
 		return this.getBean(sql, user.getUsername(),user.getPassword());
 	}
 
+	@Override
+	public boolean checkUserName(String username) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT id,username,`password`,email FROM users where username = ?";
+		User user = this.getBean(sql,username);
+		return user != null;
+	}
+
 }

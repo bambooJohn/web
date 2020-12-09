@@ -16,5 +16,12 @@ class UserDaoImplTest {
 		
 		System.out.println(user);
 	}
+	
+	@Test
+	void testCheckUserName() {
+		boolean yOn = userDao.checkUserName("test01");
+		
+		System.out.println(yOn);
+	}
 
 }
