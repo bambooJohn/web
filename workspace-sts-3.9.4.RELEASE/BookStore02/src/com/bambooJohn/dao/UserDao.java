@@ -19,4 +19,11 @@ public interface UserDao {
 	 */
 	boolean checkUserName(String username);
 	
+	/**
+	 * 将user信息保存到数据库
+	 * @param user
+	 * sql:insert into users(username,password,email) values(?,?,?)
+	 */
+	void saveUser(User user);
+	
 }

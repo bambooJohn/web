@@ -20,4 +20,13 @@ public class UserServiceImpl implements UserService{
 		return userDao.checkUserName(username);
 	}
 
+	/**
+	 * 将user信息保存到数据库
+	 */
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		userDao.saveUser(user);
+	}
+
 }

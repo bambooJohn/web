@@ -17,4 +17,7 @@ public interface UserService {
 	 * sql: select * from users where username = ?
 	 */
 	boolean checkUserName(String username);
+	
+	void saveUser(User user);
+	
 }

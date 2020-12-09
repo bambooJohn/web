@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bambooJohn.bean.User;
 import com.bambooJohn.service.UserService;
 import com.bambooJohn.service.impl.UserServiceImpl;
 
@@ -28,6 +29,8 @@ public class RegistServlet extends HttpServlet {
 		UserService userService = new UserServiceImpl();
 		//取用户名值
 		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String email = request.getParameter("email");
 		//调用service中的方法
 		boolean yOn = userService.checkUserName(username);
 		if(yOn) {
@@ -36,7 +39,9 @@ public class RegistServlet extends HttpServlet {
 		}else {
 			//用户名不存在，saveUser()
 			System.out.println("saveUser()");
-		//	response.sendRedirect(request.getContextPath() + "/pages/user/login.html");
+			userService.saveUser(new User(null,username,password,email));
+			//重定向到注册成功界面
+			response.sendRedirect(request.getContextPath() + "/pages/user/regist_success.html");
 		}
 		
 	}

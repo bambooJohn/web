@@ -21,4 +21,11 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao{
 		return user != null;
 	}
 
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		String sql = "INSERT INTO users(username,`password`,email) values(?,?,?)";
+		this.update(sql, user.getUsername(),user.getPassword(),user.getEmail());
+	}
+
 }
