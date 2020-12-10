@@ -33,6 +33,19 @@ public class Demo {
 	 * 				* java:// /**\/
 	 * 				* jsp:<%-- --%>
 	 * 		* Jsp指令
+	 * 			* 语法：<%@ 指令名 属性=属性值 属性2=属性值2%>
+	 * 			* 常用指令
+	 * 				* page指令
+	 * 					* language:支持语言，默认java,只有java。
+	 * 					* contentType:与response.setContentType()作用一致
+	 * 					* pageEncoding:jsp页面编码。
+	 * 					* import:导包
+	 * 					* errorPage:错误页面（当前页面报错时，显示的页面）
+	 * 					* isErrorPage:设置当前页面是否为错误页面
+	 * 				* include指令
+	 * 					* 作用：将目标页面包含到当前页面中。
+	 * 					* 特点：静态包含，被包含的文件不会被翻译和编译。
+	 * 				* taglib(jstl时讲到)
 	 * 		* Jsp动作标签
 	 * 		* Jsp九大隐含对象
 	 * 		* Jsp四大域对象

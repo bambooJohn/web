@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="NewFile.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +8,14 @@
 </head>
 <body>
 	<%
-		int i = 100;
+		/* int i = 100; */
+		int j = 100; 
 	%>
-	这是我的第<%=i %>个jsp页面！
+	<%! 
+		int j = 1;
+	%>
+	这是我的第<%=j %>个jsp页面！
+	<h1>include</h1>
+	<%@ include file="NewFile.jsp" %>
 </body>
 </html>
