@@ -2,7 +2,7 @@ package com.bambooJohn.demo;
 
 public class Demo {
 
-	/**
+	/*
 	 * Jsp
 	 * 		* 简介：Java Server Pages (java服务器页面)
 	 * 			* Servlet = java + html
@@ -47,6 +47,18 @@ public class Demo {
 	 * 					* 特点：静态包含，被包含的文件不会被翻译和编译。
 	 * 				* taglib(jstl时讲到)
 	 * 		* Jsp动作标签
+	 * 			* 语法：<jsp 标签名 属性=属性值></jsp:>
+	 * 			* 常用的动作标签
+	 * 				* 转发：
+	 * 					* 带参数
+	 * 						<jsp:forward page="NewFile.jsp">
+								<jsp:param value="18" name="age"/>
+							</jsp:forward>
+						* 不带参数
+							*注意开始标签与结束标签之间不能有任何内容。
+					* 动态包含
+						* 语法：<jsp:include page="被包含文件的路径"></jsp:include>
+						* 特点：被包含文件会先被翻译和编译
 	 * 		* Jsp九大隐含对象
 	 * 		* Jsp四大域对象
 	 */

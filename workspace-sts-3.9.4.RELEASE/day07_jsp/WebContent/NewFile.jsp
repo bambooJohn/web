@@ -16,5 +16,6 @@
 			}
 		}
 	%>
+	age:<%=request.getParameter("age") %>
 </body>
 </html>
