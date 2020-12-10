@@ -8,7 +8,18 @@ public class Demo {
 	 * 			* Servlet = java + html
 	 * 			* Jsp = html + java
 	 * 			* Jsp只能运行服务器（Web容器）中。
-	 * 		* Jsp本质是Servlet
+	 * 			* Jsp本质是Servlet
+	 * 		* Jsp运行原理
+	 * 			* 第一次访问jsp文件时，会经过以下步骤
+	 * 				* 服务器将.jsp文件翻译为.java文件（Servlet）
+	 * 				* 将.java文件编译为.class文件
+	 * 				* 运行
+	 * 			* 如文件未改变时，以后再访问，不会翻译和编译
+	 * 		* Jsp基本语法
+	 * 		* Jsp指令
+	 * 		* Jsp动作标签
+	 * 		* Jsp九大隐含对象
+	 * 		* Jsp四大域对象
 	 */
 	
 }
