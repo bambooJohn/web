@@ -99,6 +99,27 @@ public class Demo {
 	 * 					* 类型：Throwable
 	 * 					* 作用：接受处理异常信息
 	 * 		* Jsp四大域对象
+	 * 			* 域，区域，在web应用的不同资源中，相互传递数据。
+	 * 				* 生活区域（快递）
+	 * 					* 昌平区域
+	 * 					* 北京同城
+	 * 					* 全国快递
+	 * 					* 全球快递
+	 * 				* 程序区域
+	 * 			* 域对象共有的方法
+	 * 				* getAttribute()
+	 * 				* setAttribute()
+	 * 				* removeAttribute()
+	 * 			* 详情
+	 * 				* application
+	 * 					* 范围：当前项目中有效
+	 * 				* session
+	 * 					* 范围：当前会话中有效（与浏览器，只有浏览器不关闭|不换，就一直有效）
+	 * 				* request
+	 * 					* 范围：当前请求中有效
+	 * 				* pageContext
+	 * 					* 范围：当前页面中有效
+	 * 
 	 */
 	
 }
