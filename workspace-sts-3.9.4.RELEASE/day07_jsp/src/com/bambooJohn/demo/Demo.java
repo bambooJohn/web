@@ -91,7 +91,6 @@ public class Demo {
 	 * 				7. out
 	 * 					* 类型： JspWriter
 	 * 					* 作用： 与Servlet中的PrintWriter的作用类似。（都继承了java.io.Writer）
-	 * 					* Servlet中的获取方式：直接使用
 	 * 				8. config
 	 * 					* 类型： ServletConfig
 	 * 					* 作用： 与Servlet中的ServletConfig的作用一致
