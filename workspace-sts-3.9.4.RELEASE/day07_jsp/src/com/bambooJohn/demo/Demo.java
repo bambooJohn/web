@@ -60,6 +60,45 @@ public class Demo {
 						* 语法：<jsp:include page="被包含文件的路径"></jsp:include>
 						* 特点：被包含文件会先被翻译和编译
 	 * 		* Jsp九大隐含对象
+	 * 			* 定义：可以在jsp中直接使用的对象。（不需要我们new的对象，服务器实例化的九大隐含对象，并存放在_jspService()方法中）
+	 * 			* 对象详情
+	 * 				1. application
+	 * 					* 类型：ServletContext
+	 * 					* 作用：域对象
+	 * 					* Servlet中的获取方式：this.getServletContext()
+	 * 				2. session
+	 * 					* 类型：HttpSession
+	 * 					* 作用：域对象
+	 * 					* Servlet中的获取方式：request.getSession()
+	 * 				3. request
+	 * 					* 类型：HttpServletRequest
+	 * 					* 作用：域对象（4个）
+	 * 					* Servlet中的获取方式：直接使用
+	 * 				4. pageContext
+	 * 					* 类型：PageContext
+	 * 					* 作用
+	 * 						* 域对象
+	 * 						* jsp老大（可以通过老大直接获取其他八个隐含对象）
+	 * 					* Servlet中的获取方式：无
+	 * 				5. response
+	 * 					* 类型：HttpServletResponse
+	 * 					* 作用：与Servlet中的response对象一致
+	 * 					* Servlet中的获取方式：直接使用
+	 * 				6. page
+	 * 					* 类型：Object
+	 * 					* 作用：page = this，当前类的对象
+	 * 					* Servlet中的获取方式：直接使用
+	 * 				7. out
+	 * 					* 类型： JspWriter
+	 * 					* 作用： 与Servlet中的PrintWriter的作用类似。（都继承了java.io.Writer）
+	 * 					* Servlet中的获取方式：直接使用
+	 * 				8. config
+	 * 					* 类型： ServletConfig
+	 * 					* 作用： 与Servlet中的ServletConfig的作用一致
+	 * 					* Servlet中的获取方式：this.getServletConfig()
+	 * 				9. exception
+	 * 					* 类型：Throwable
+	 * 					* 作用：接受处理异常信息
 	 * 		* Jsp四大域对象
 	 */
 	
