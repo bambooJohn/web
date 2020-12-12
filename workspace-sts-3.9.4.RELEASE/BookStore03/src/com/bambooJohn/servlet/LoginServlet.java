@@ -29,6 +29,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//UserDao userDao = new UserDaoImpl();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		UserService userService = new UserServiceImpl();
 		//1.取用户名&密码值
 		String username = request.getParameter("username");
@@ -38,10 +40,11 @@ public class LoginServlet extends HttpServlet {
 		
 		if(null == user) {
 			//登录失败，转发
-			request.getRequestDispatcher("/pages/user/login.html").forward(request, response);
+			request.setAttribute("msg", "用户名或密码输入有误，请重新输入！");
+			request.getRequestDispatcher("/pages/user/login.jsp").forward(request, response);
 		}else {
 			//登录成功，重定向
-			response.sendRedirect(request.getContextPath() + "/pages/user/login_success.html");
+			response.sendRedirect(request.getContextPath() + "/pages/user/login_success.jsp");
 		}
 		
 	}

@@ -35,13 +35,14 @@ public class RegistServlet extends HttpServlet {
 		boolean yOn = userService.checkUserName(username);
 		if(yOn) {
 			//用户名存在，转发
-			request.getRequestDispatcher("/pages/user/regist.html").forward(request, response);
+			request.setAttribute("msg", "用户名已存在，请重新输入！");
+			request.getRequestDispatcher("/pages/user/regist.jsp").forward(request, response);
 		}else {
 			//用户名不存在，saveUser()
-			System.out.println("saveUser()");
+			//System.out.println("saveUser()");
 			userService.saveUser(new User(null,username,password,email));
 			//重定向到注册成功界面
-			response.sendRedirect(request.getContextPath() + "/pages/user/regist_success.html");
+			response.sendRedirect(request.getContextPath() + "/pages/user/regist_success.jsp");
 		}
 		
 	}
