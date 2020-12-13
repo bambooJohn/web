@@ -25,6 +25,23 @@ public class Demo {
 	 *	request域 			request			requestScope
 	 *	page域 				pageContext		pageScope
 	 * 
+	 * El使用
+	 * 	语法：${表达式}
+	 * 	eg:${requestScope.i}	${stu.name}
+	 * 		默认从小域到大域进行查找
+	 * El的11个隐含对象
+	 * 		pageContext：与jsp中的pageContext作用一致。
+	 * 		applicationScope
+	 * 		sessionScope
+	 * 		requestScope
+	 * 		param:相当于request.getParamter()
+	 * 		paramValues:相当于request.getParamterValues()
+	 * 		header:获取报文头信息
+	 * 		headerValues:
+	 * 		initParam:获取初始化参数
+	 * 		cookie:获取cookie信息
+	 * El的运算符
+	 * 
 	 */
 	
 }
