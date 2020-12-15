@@ -1,3 +1,4 @@
+<%@page import="com.bambooJohn.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,6 +12,8 @@
 	<%
 		int i = 10;
 	request.setAttribute("i", i);
+	User user = new User("zs","123456");
+	request.setAttribute("user", user);
 	%>
 	jsp:<%=i %>
 	<h1>JSTL通用标签</h1>
@@ -18,5 +21,36 @@
 	jstl:<c:out value="${pageScope.i}"></c:out>
 	<c:remove var="i" scope="request"></c:remove></br>
 	el:${i}
+	<h1>JSTL选择结构</h1>
+	<c:set target="${requestScope.user}" property="username" value="lisi"></c:set>
+	
+	<c:if test="${not empty requestScope.user }">
+		user is null
+	</c:if>
+	end<br>
+	
+	<!--
+		age<18:未成年   30>age>=18:青年  60>age>=30:中年
+		80>age>=60:中老年  age>=80:老年 
+	  -->
+	<c:set var="age" value="80" scope="session"></c:set>
+	<c:choose>
+		<c:when test="${sessionScope.age < 18}">
+			未成年
+		</c:when>
+		<c:when test="${sessionScope.age >= 18 and sessionScope.age < 30}">
+			青年
+		</c:when>
+		<c:when test="${sessionScope.age >= 30 and sessionScope.age < 60}">
+			中年
+		</c:when>
+		<c:when test="${sessionScope.age >= 60 and sessionScope.age < 80}">
+			中老年
+		</c:when>
+		<c:otherwise>
+			老年
+		</c:otherwise>
+	</c:choose>
+	
 </body>
 </html>
