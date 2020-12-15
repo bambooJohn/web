@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.bambooJohn.bean.Student"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,5 +26,19 @@
 	%>
 	el:${stu.name}<br>
 	jsp:<%=((Student)request.getAttribute("stu")).getName() %>
+	
+	<h1>empty运算符</h1>
+	<%
+		String s = "";
+		String s2 = null;
+		List<String> list = new ArrayList<String>();
+		
+		request.setAttribute("s", s);
+		request.setAttribute("s2", s2);
+		request.setAttribute("list", list);
+	%>
+	${not empty s}<br>
+	${!empty s2}<br>
+	${empty list}<br>
 </body>
 </html>

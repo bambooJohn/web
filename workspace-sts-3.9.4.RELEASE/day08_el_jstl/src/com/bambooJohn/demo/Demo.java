@@ -41,7 +41,15 @@ public class Demo {
 	 * 		initParam:获取初始化参数
 	 * 		cookie:获取cookie信息
 	 * El的运算符
-	 * 
+	 * 		java:算术运算符  逻辑运算符  比较运算符  位运算符  三元运算符
+	 * 		El判断空值的运算符
+	 * 			empty判断支持三种空
+	 * 				null
+	 * 				""
+	 * 				List<String> list = new ArrayList<String>();(集合无数据)
+	 * 		判断非空
+	 * 			!empty
+	 * 			not empty
 	 */
 	
 }
