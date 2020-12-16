@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.bambooJohn.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,6 +16,12 @@
 	request.setAttribute("i", i);
 	User user = new User("zs","123456");
 	request.setAttribute("user", user);
+	//list
+	List<User>list = new ArrayList<User>();
+	list.add(new User("zs","123456"));
+	list.add(new User("lisi","123456"));
+	list.add(new User("ww","123456"));
+	session.setAttribute("list", list);
 	%>
 	jsp:<%=i %>
 	<h1>JSTL通用标签</h1>
@@ -51,6 +59,13 @@
 			老年
 		</c:otherwise>
 	</c:choose>
-	
+	<h1>循环结构</h1>
+	<c:forEach var="i" begin="1" end="100" step="2">
+		${i}
+	</c:forEach>
+	<br>
+	<c:forEach items="${sessionScope.list}" var="user">
+		username:${user.username}--password:${user.password}<br>
+	</c:forEach>
 </body>
 </html>
