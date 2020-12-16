@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="NewFile.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,14 @@
 							</div>
 							<div class="msg_cont">
 								<b></b>
-								<span class="errorMsg"><%=request.getAttribute("msg") == null ?"请输入用户名和密码" : request.getAttribute("msg")%></span>
+								<%-- <span class="errorMsg"><%=request.getAttribute("msg") == null ?"请输入用户名和密码" : request.getAttribute("msg")%></span> --%>
+								<c:if test="${empty requestScope.msg}">
+									<span class="errorMsg">请输入用户名和密码</span>
+								</c:if>
+								<c:if test="${not empty requestScope.msg}">
+									<span class="errorMsg">${requestScope.msg}</span>
+								</c:if>
+								
 							</div>
 							<div class="form">
 								<form action="UserServlet?method=login" method="post">
