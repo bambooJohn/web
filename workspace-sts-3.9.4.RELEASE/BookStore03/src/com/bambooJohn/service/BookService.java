@@ -12,4 +12,8 @@ public interface BookService {
 	 */
 	public List<Book> getAllBooks();
 	
+	public void addBook(Book book);
+	
+	public void delBookById(String id);
+	
 }

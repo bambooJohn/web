@@ -35,5 +35,26 @@ public class BookServlet extends BaseServlet {
 		request.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(request, response);
 		
 	}
+	
+	protected void addBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//取值
+		String title = request.getParameter("title");
+		String price = request.getParameter("price");
+		String author = request.getParameter("author");
+		String sales = request.getParameter("sales");
+		String stock = request.getParameter("stock");
+		Book book = new Book(null,title,author,Double.parseDouble(price),Integer.parseInt(sales),Integer.parseInt(stock),null);
+		//调用service
+		bookService.addBook(book);
+		//跳转，重新查询，book_manager.jsp
+		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
+		
+	}
+	
+	protected void delBookById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String bookId = request.getParameter("bookId");
+		bookService.delBookById(bookId);
+		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
+	}
 
 }

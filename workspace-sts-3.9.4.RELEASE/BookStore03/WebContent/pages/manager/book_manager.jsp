@@ -6,6 +6,16 @@
 <meta charset="UTF-8">
 <title>图书管理</title>
 <%@ include file="/WEB-INF/include/base.jsp" %>
+<script type="text/javascript">
+	$(function(){
+		$(".dela").click(function(){
+			var title = $(this).attr("id");
+			if(confirm("确认删除【" + title + "】吗？") == false){
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	
@@ -33,7 +43,7 @@
 					<td>${book.sales}</td>
 					<td>${book.stock}</td>
 					<td><a href="book_edit.jsp">修改</a></td>
-					<td><a href="#">删除</a></td>
+					<td><a class="dela" id="${book.title}" href="BookServlet?method=delBookById&bookId=${book.id}">删除</a></td>
 				</tr>	
 			</c:forEach>
 			
@@ -44,7 +54,7 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a href="book_edit.jsp">添加图书</a></td>
+				<td><a href="pages/manager/book_edit.jsp">添加图书</a></td>
 			</tr>	
 		</table>
 	</div>

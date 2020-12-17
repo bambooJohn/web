@@ -22,7 +22,7 @@ public class Book {
 		this.price = price;
 		this.sales = sales;
 		this.stock = stock;
-		this.imgPath = imgPath;
+		this.imgPath = "static/img/default.jpg";
 	}
 
 	public Integer getId() {
