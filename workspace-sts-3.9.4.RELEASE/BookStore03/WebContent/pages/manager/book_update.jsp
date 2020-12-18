@@ -30,7 +30,7 @@
 		
 		<div id="main">
 			<form action="BookServlet?method=updateBook" method="post">
-			<input type="hidden" name="id" value="${book.id}"/>
+			<input type="hidden" name="bookId" value="${book.id}"/>
 				<table>
 					<tr>
 						<td>名称</td>

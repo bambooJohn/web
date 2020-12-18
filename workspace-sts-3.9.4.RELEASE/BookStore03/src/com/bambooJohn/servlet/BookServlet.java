@@ -93,7 +93,7 @@ public class BookServlet extends BaseServlet {
 	 * @throws IOException
 	 */
 	protected void updateBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
+		String id = request.getParameter("bookId");
 		String title = request.getParameter("title");
 		String price = request.getParameter("price");
 		String author = request.getParameter("author");
