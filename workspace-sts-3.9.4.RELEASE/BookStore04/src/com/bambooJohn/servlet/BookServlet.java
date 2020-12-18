@@ -43,7 +43,7 @@ public class BookServlet extends BaseServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	protected void addBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void addBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//取值
 		String title = request.getParameter("title");
 		String price = request.getParameter("price");
@@ -56,7 +56,7 @@ public class BookServlet extends BaseServlet {
 		//跳转，重新查询，book_manager.jsp
 		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
 		
-	}
+	}*/
 	
 	/**
 	 * 添加book信息
@@ -99,8 +99,16 @@ public class BookServlet extends BaseServlet {
 		String author = request.getParameter("author");
 		String sales = request.getParameter("sales");
 		String stock = request.getParameter("stock");
-		Book book = new Book(Integer.parseInt(id),title,author,Double.parseDouble(price),Integer.parseInt(sales),Integer.parseInt(stock),null);
-		bookService.updateBook(book);
+		//通过判断id值是否为空，执行相应方法
+		//调用service
+		if(null == id || "".equals(id)) {
+			//调用addBook()
+			bookService.addBook(new Book(null,title,author,Double.parseDouble(price),Integer.parseInt(sales),Integer.parseInt(stock),null));
+		}else {
+			//调用updateBook()
+			bookService.updateBook(new Book(Integer.parseInt(id),title,author,Double.parseDouble(price),Integer.parseInt(sales),Integer.parseInt(stock),null));
+		}
+		//跳转
 		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
 	}
 
