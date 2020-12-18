@@ -36,6 +36,13 @@ public class BookServlet extends BaseServlet {
 		
 	}
 	
+	/**
+	 * 添加book信息
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void addBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//取值
 		String title = request.getParameter("title");
@@ -51,9 +58,49 @@ public class BookServlet extends BaseServlet {
 		
 	}
 	
+	/**
+	 * 添加book信息
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void delBookById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bookId = request.getParameter("bookId");
 		bookService.delBookById(bookId);
+		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
+	}
+	
+	/**
+	 * 通过id获取book信息
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void getBookById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("bookId");
+		Book book = bookService.getBookById(id);
+		request.setAttribute("book", book);
+		request.getRequestDispatcher("/pages/manager/book_update.jsp").forward(request, response);
+	}
+	
+	/**
+	 * 通过id获取book信息
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void updateBook(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		String title = request.getParameter("title");
+		String price = request.getParameter("price");
+		String author = request.getParameter("author");
+		String sales = request.getParameter("sales");
+		String stock = request.getParameter("stock");
+		Book book = new Book(Integer.parseInt(id),title,author,Double.parseDouble(price),Integer.parseInt(sales),Integer.parseInt(stock),null);
+		bookService.updateBook(book);
 		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
 	}
 
