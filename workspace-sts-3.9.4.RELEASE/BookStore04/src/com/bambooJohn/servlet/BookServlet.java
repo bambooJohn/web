@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bambooJohn.bean.Book;
+import com.bambooJohn.bean.Page;
 import com.bambooJohn.service.BookService;
 import com.bambooJohn.service.impl.BookServiceImpl;
 
@@ -26,7 +27,7 @@ public class BookServlet extends BaseServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	protected void getAllBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void getAllBooks(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//调用service中相应方法
 		List<Book> books = bookService.getAllBooks();
 		//将books存放到域中
@@ -34,7 +35,7 @@ public class BookServlet extends BaseServlet {
 		//跳转,book_manager.jsp
 		request.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(request, response);
 		
-	}
+	}*/
 	
 	/**
 	 * 添加book信息
@@ -111,5 +112,22 @@ public class BookServlet extends BaseServlet {
 		//跳转
 		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
 	}
-
+	
+	/**
+	 * 分页查询book
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void getBookByPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//取值
+		String pageNo = request.getParameter("pageNo");
+		//调用service
+		Page<Book> page = bookService.getBookByPage(pageNo);
+		//将page存放到域中
+		request.setAttribute("page", page);
+		//跳转
+		request.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(request, response);
+	}
 }

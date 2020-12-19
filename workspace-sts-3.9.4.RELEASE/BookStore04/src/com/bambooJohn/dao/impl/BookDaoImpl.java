@@ -3,6 +3,7 @@ package com.bambooJohn.dao.impl;
 import java.util.List;
 
 import com.bambooJohn.bean.Book;
+import com.bambooJohn.bean.Page;
 import com.bambooJohn.dao.BaseDao;
 import com.bambooJohn.dao.BookDao;
 
@@ -37,5 +38,24 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 		String sql = "update books set title = ?,author = ?,price = ?,sales = ?,stock = ?,img_path = ? where id = ?";
 		update(sql, book.getTitle(),book.getAuthor(),book.getPrice(),book.getSales(),book.getStock(),book.getImgPath(),book.getId());
 	}
+
+	@Override
+	public Page<Book> getBookByPage(Page<Book> page) {
+		String sqlCount = "select count(*) from books";
+		int totalRecord = Integer.parseInt(this.getSingleValue(sqlCount) + "");
+		//将totalRecord赋值
+		page.setTotalRecord(totalRecord);
+		String sqlList = "select id,title,author,price,sales,stock,img_path from books "
+				+ "where 1 = 1 "
+				+ "limit ?,?";
+		;
+		List<Book> list = getBeanList(sqlList, (page.getPageNo() - 1) * page.getPageSize(),page.getPageSize());
+		//将list存放到page中
+		page.setList(list);
+		
+		return page;
+	}
+
+	
 
 }

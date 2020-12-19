@@ -3,6 +3,7 @@ package com.bambooJohn.service.impl;
 import java.util.List;
 
 import com.bambooJohn.bean.Book;
+import com.bambooJohn.bean.Page;
 import com.bambooJohn.dao.BookDao;
 import com.bambooJohn.dao.impl.BookDaoImpl;
 import com.bambooJohn.service.BookService;
@@ -34,6 +35,20 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void updateBook(Book book) {
 		bookDao.updateBook(book);
+	}
+
+	@Override
+	public Page<Book> getBookByPage(String pageNo) {
+		Page<Book> page = new Page<>();
+		int pNo = 1;
+		try {
+			pNo = Integer.parseInt(pageNo);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		page.setPageNo(pNo);
+		return bookDao.getBookByPage(page);
 	}
 	
 }

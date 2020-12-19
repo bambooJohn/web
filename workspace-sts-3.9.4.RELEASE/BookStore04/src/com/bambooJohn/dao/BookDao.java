@@ -3,6 +3,7 @@ package com.bambooJohn.dao;
 import java.util.List;
 
 import com.bambooJohn.bean.Book;
+import com.bambooJohn.bean.Page;
 
 public interface BookDao {
 
@@ -41,5 +42,13 @@ public interface BookDao {
 	 * @param book
 	 */
 	public void updateBook(Book book);
+	
+	/**
+	 * 修改book
+	 * sql:select id,title,author,price,sales,stock,img_path from books where 1 = 1 limit ?,?
+	 * @param page
+	 * @return
+	 */
+	public Page<Book> getBookByPage(Page<Book> page);
 	
 }
