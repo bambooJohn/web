@@ -50,5 +50,29 @@ public class BookServiceImpl implements BookService {
 		page.setPageNo(pNo);
 		return bookDao.getBookByPage(page);
 	}
+
+	@Override
+	public Page<Book> getBookByPageAndPrice(String pageNo, String min, String max) {
+		Page<Book> page = new Page<>();
+		int pNo = 1;
+		double minEnd = 0;
+		double maxEnd = Double.MAX_VALUE;
+		try {
+			pNo = Integer.parseInt(pageNo);
+			minEnd = Double.parseDouble(min);
+			maxEnd = Double.parseDouble(max);
+			double temp = 0;
+			if(minEnd > maxEnd) {
+				temp = minEnd;
+				minEnd = maxEnd;
+				maxEnd = temp;
+			}
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		page.setPageNo(pNo);
+		return bookDao.getBookByPageAndPrice(page,minEnd,maxEnd);
+	}
 	
 }

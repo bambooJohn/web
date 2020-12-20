@@ -14,7 +14,29 @@
 			//取pageNo值
 			var pageNo = $("#pn_input").val();
 			//请求BookServlet
-			location = "BookClientServlet?method=getBookByPage&pageNo=" + pageNo;
+			/* location = "BookClientServlet?method=getBookByPage&pageNo=" + pageNo; */
+			var min = $("input[name='min']").val();
+			var max = $("input[name='max']").val();
+			
+			//请求BookClientServlet
+			location = "BookClientServlet?method=getBookByPageAndPrice" 
+					+"&pageNo=" + pageNo
+					+"&min=" + min
+					+"&max=" + max;
+		});
+		
+		//带价格区间的分页查询
+		$(".book_cond button").click(function(){
+			//取pageNo,min,max值
+			var pageNo = $("#pn_input").val();
+			var min = $("input[name='min']").val();
+			var max = $("input[name='max']").val();
+			
+			//请求BookClientServlet
+			location = "BookClientServlet?method=getBookByPageAndPrice" 
+					+"&pageNo=" + pageNo
+					+"&min=" + min
+					+"&max=" + max;
 		});
 		
 	});
@@ -31,7 +53,9 @@
 	<div id="main">
 		<div id="book">
 			<div class="book_cond">
-				价格：<input type="text" name="min"> 元 - <input type="text" name="max"> 元 <button>查询</button>
+				价格：<input type="text" name="min" value="${param.min}"> 元 - 
+				<input type="text" name="max" value="${param.max}"> 元 
+				<button>查询</button>
 			</div>
 			<div style="text-align: center">
 				<span>您的购物车中有3件商品</span>
@@ -96,47 +120,30 @@
 		<div id="page_nav">
 		<c:choose>
 			<c:when test="${requestScope.page.totalPageNo<=5}">
-				<c:forEach var="i" begin="1" end="${requestScope.page.totalPageNo}" step="1">
-					<c:if test="${requestScope.page.pageNo == i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">【${i}】</a>
-					</c:if>
-					<c:if test="${requestScope.page.pageNo != i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">${i}</a>
-					</c:if>
-				</c:forEach>
+				<c:set var="begin" value="1"></c:set>
+				<c:set var="end" value="${requestScope.page.totalPageNo}"></c:set>
 			</c:when>
 			<c:when test="${requestScope.page.pageNo<=3}">
-				<c:forEach var="i" begin="1" end="5" step="1">
-					<c:if test="${requestScope.page.pageNo == i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">【${i}】</a>
-					</c:if>
-					<c:if test="${requestScope.page.pageNo != i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">${i}</a>
-					</c:if>
-				</c:forEach>
+				<c:set var="begin" value="1"></c:set>
+				<c:set var="end" value="5"></c:set>
 			</c:when>
 			<c:when test="${requestScope.page.pageNo<=requestScope.page.totalPageNo-2}">
-				<c:forEach var="i" begin="${requestScope.page.pageNo-2}" end="${requestScope.page.pageNo+2}" step="1">
-					<c:if test="${requestScope.page.pageNo == i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">【${i}】</a>
-					</c:if>
-					<c:if test="${requestScope.page.pageNo != i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">${i}</a>
-					</c:if>
-				</c:forEach>
+				<c:set var="begin" value="${requestScope.page.pageNo-2}"></c:set>
+				<c:set var="end" value="${requestScope.page.pageNo+2}"></c:set>
 			</c:when>
-			<c:when test="${requestScope.page.pageNo>requestScope.page.totalPageNo-2}">
-				<c:forEach var="i" begin="${requestScope.page.totalPageNo-4}" end="${requestScope.page.totalPageNo}" step="1">
-					<c:if test="${requestScope.page.pageNo == i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">【${i}】</a>
-					</c:if>
-					<c:if test="${requestScope.page.pageNo != i}">
-						<a href="BookClientServlet?method=getBookByPage&pageNo=${i}">${i}</a>
-					</c:if>
-				</c:forEach>
-			</c:when>
+			<c:otherwise>
+				<c:set var="begin" value="${requestScope.page.totalPageNo-4}"></c:set>
+				<c:set var="end" value="${requestScope.page.totalPageNo}"></c:set>
+			</c:otherwise>
 		</c:choose>
-		
+		<c:forEach var="i" begin="${begin}" end="${end}" step="1">
+			<c:if test="${requestScope.page.pageNo == i}">
+				<a href="BookClientServlet?method=getBookByPageAndPrice&pageNo=${i}&min=${param.min}&max=${param.max}">【${i}】</a>
+			</c:if>
+			<c:if test="${requestScope.page.pageNo != i}">
+				<a href="BookClientServlet?method=getBookByPageAndPrice&pageNo=${i}&min=${param.min}&max=${param.max}">${i}</a>
+			</c:if>
+		</c:forEach>
 		共${requestScope.page.pageNo}/${requestScope.page.totalPageNo}页，${requestScope.page.totalRecord}条记录 到第
 		<input value="${requestScope.page.pageNo}" name="pn" id="pn_input"/>页
 		<input id="sub_page" type="button" value="确定">

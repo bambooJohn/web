@@ -51,4 +51,13 @@ public interface BookDao {
 	 */
 	public Page<Book> getBookByPage(Page<Book> page);
 	
+	/**
+	 * 带价格区间的分页查询
+	 * @param page
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public Page<Book> getBookByPageAndPrice(Page<Book> page,double min,double max);
+	
 }

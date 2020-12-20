@@ -28,5 +28,25 @@ public class BookClientServlet extends BaseServlet {
 		//跳转
 		request.getRequestDispatcher("/pages/client/book_client.jsp").forward(request, response);
 	}
+	
+	/**
+	 * 客户端带价格区间分页查询
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void getBookByPageAndPrice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//取值
+		String pageNo = request.getParameter("pageNo");
+		String min = request.getParameter("min");
+		String max = request.getParameter("max");
+		//调用service
+		Page<Book> page = bookService.getBookByPageAndPrice(pageNo, min, max);
+		//将page存放到域中
+		request.setAttribute("page", page);
+		//跳转
+		request.getRequestDispatcher("/pages/client/book_client.jsp").forward(request, response);
+	}
 
 }
