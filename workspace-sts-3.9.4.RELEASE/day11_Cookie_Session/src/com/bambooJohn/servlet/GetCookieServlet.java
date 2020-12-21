@@ -16,7 +16,7 @@ public class GetCookieServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//获取Cookie
 		Cookie[] cookies = request.getCookies();
-		
+		// 循环打印cookie
 		for (Cookie cookie : cookies) {
 			System.out.print("cookieName:" + cookie.getName());
 			System.out.println("---cookieValue:" + cookie.getValue());

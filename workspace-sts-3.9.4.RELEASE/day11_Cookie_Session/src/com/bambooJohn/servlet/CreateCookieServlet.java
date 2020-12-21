@@ -16,7 +16,7 @@ public class CreateCookieServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//创建Cookie对象，并携带用户信息
 		Cookie cookieName = new Cookie("stuName", "zhangsan");
-		//响应给客户端
+		//响应cookie给客户端
 		response.addCookie(cookieName);
 		
 	}
