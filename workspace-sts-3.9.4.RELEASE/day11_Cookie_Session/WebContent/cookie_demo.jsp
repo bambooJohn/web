@@ -10,6 +10,7 @@
 	<h1>CookieDemo</h1>
 	<a href="CreateCookieServlet">创建Cookie对象</a><br>
 	<a href="GetCookieServlet">获到Cookie对象</a><br>
-	<a href="UpdateCookieServlet">修改Cookie对象</a>
+	<a href="UpdateCookieServlet">修改Cookie对象</a><br>
+	<a href="ChiCookieServlet">持久化Cookie对象</a>
 </body>
 </html>

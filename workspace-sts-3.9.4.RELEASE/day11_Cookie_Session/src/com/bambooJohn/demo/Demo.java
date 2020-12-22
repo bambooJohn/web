@@ -29,6 +29,13 @@ public class Demo {
 	 * 		* Cookie的键值问题
 	 * 			* name不可以为中文，value可以为中文，需要指定字符集问题，所以建议使用英文。
 	 * 		* Cookie有效性
+	 * 			* 默认会话级别，与浏览器有关（关闭浏览器或换一个浏览器失效）
+	 * 			* 持久化
+	 * 				* setMaxAge(ss:秒)
+	 * 					* ss>0:在ss秒后失效
+	 * 					* ss=0:立即失效
+	 * 					* ss<0:默认会话级别
+	 * 				* 注意：持久化Cookie，该Cookie不是会话级别
 	 * 		* Cookie有效路径
 	 * 		* Cookie应用
 	 * 		* Cookie缺陷
