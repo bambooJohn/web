@@ -41,6 +41,7 @@ public class Demo {
 	 * 			* setPath():一般设置有效路径，都是基于当前项目下的路径进行设置。
 	 * 				* 如：cookie.setPath(request.getContextPath() + "/a");
 	 * 		* Cookie应用
+	 * 			* 记住密码
 	 * 		* Cookie缺陷
 	 * 
 	 * Session
