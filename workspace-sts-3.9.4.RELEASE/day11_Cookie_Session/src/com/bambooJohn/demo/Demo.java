@@ -43,9 +43,27 @@ public class Demo {
 	 * 		* Cookie应用
 	 * 			* 记住密码
 	 * 		* Cookie缺陷
+	 * 			* Cookie的value为String型，不灵活。
+	 * 			* Cookie存放在浏览器中，不安全。
+	 * 			* Cookie过多，会浪费流量。
 	 * 
 	 * Session
-	 * 
+	 * 		* 简介
+	 * 			* 类型：HttpSession
+	 * 		* Session工作原理
+	 * 			* 请求
+	 * 			* 服务器创建Session，同时创建一个特殊的Cookie，该Cookie的key为JSESSIONID,
+	 * 				value为session的id。
+	 * 			* 服务器将该Cookie对象发送（响应）给客户端
+	 * 			* 以后客户端再请求时，会携带该Cookie对象。
+	 * 			* 服务器会根据Cookie的value，找到相应的Session，从而区分不同的给用户。
+	 * 		* Session获取
+	 * 			* html(Servlet):request.getSession()
+	 * 			* jsp:直接获取（session是jsp中的隐含对象）
+	 * 		* Session有效性
+	 * 		* Session钝化与活化
+	 * 		* Session应用
+	 * 		* 表单重复提交问题
 	 */
 	
 }
