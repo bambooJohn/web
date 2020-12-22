@@ -18,7 +18,8 @@ public class ChiCookieServlet extends HttpServlet {
 		Cookie cookie = new Cookie("stuAge", "18");
 		//cookie.setMaxAge(30);
 		//cookie.setMaxAge(0);
-		cookie.setMaxAge(-1);
+		//cookie.setMaxAge(-1);
+		cookie.setPath(request.getContextPath() + "/a");
 		response.addCookie(cookie);
 	}
 

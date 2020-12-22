@@ -37,6 +37,9 @@ public class Demo {
 	 * 					* ss<0:默认会话级别
 	 * 				* 注意：持久化Cookie，该Cookie不是会话级别
 	 * 		* Cookie有效路径
+	 * 			* 默认有效路径：当前项目路径
+	 * 			* setPath():一般设置有效路径，都是基于当前项目下的路径进行设置。
+	 * 				* 如：cookie.setPath(request.getContextPath() + "/a");
 	 * 		* Cookie应用
 	 * 		* Cookie缺陷
 	 * 
