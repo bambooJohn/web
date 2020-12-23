@@ -61,6 +61,18 @@ public class Demo {
 	 * 			* html(Servlet):request.getSession()
 	 * 			* jsp:直接获取（session是jsp中的隐含对象）
 	 * 		* Session有效性
+	 * 			* 默认有效性：当前会话（因为特殊的Cookie是会话级别的）
+	 * 			* 持久化Session
+	 * 				* 持久化特殊Cookie
+	 * 				* Session存活时间
+	 * 					* 默认存活时间为30分钟
+	 * 					* 设置session的非活动时间
+	 * 						* web.xml中
+			  					<!--以下配置单位分钟-->
+			  					<session-config>
+							        <session-timeout>30</session-timeout>
+							    </session-config>
+					    	* session.setMaxInactiveInterval(30);
 	 * 		* Session钝化与活化
 	 * 		* Session应用
 	 * 		* 表单重复提交问题

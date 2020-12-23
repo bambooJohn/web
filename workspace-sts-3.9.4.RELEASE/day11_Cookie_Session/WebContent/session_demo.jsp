@@ -8,6 +8,7 @@
 </head>
 <body>
 	sessionId:<%=session.getId() %><br>
-	<a href="GetSessionServlet">获取Session</a>
+	<a href="GetSessionServlet">获取Session</a><br>
+	<a href="ChiSessionServlet">持久化Session</a><br>	
 </body>
 </html>
