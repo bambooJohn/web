@@ -72,8 +72,16 @@ public class Demo {
 			  					<session-config>
 							        <session-timeout>30</session-timeout>
 							    </session-config>
-					    	* session.setMaxInactiveInterval(30);
+					    	* session.setMaxInactiveInterval(ss);
+					    		* ss>0:在ss秒后失效
+					    		* ss<=0:永不失效（Tomcat>=7）
+					    	* session立即失效
+					    		* session.invalidate();
 	 * 		* Session钝化与活化
+	 * 			* 钝化：将session对象及session对象中的数据，一同从内存中序列化到硬盘的过程称之为钝化。
+	 * 				* 时机：服务器关闭时触发
+	 * 			* 活化：将session对象及session对象中的数据，一同从硬盘反序列化到内存的过程称之为活化。
+	 * 				* 时机：服务器重启时触发。
 	 * 		* Session应用
 	 * 		* 表单重复提交问题
 	 */

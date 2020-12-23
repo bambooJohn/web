@@ -10,5 +10,7 @@
 	sessionId:<%=session.getId() %><br>
 	<a href="GetSessionServlet">获取Session</a><br>
 	<a href="ChiSessionServlet">持久化Session</a><br>	
+	<a href="ShiSessionServlet">设置Session立即失效</a><br>	
+	student:<%=session.getAttribute("stu") %>
 </body>
 </html>
