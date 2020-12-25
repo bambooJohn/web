@@ -39,6 +39,14 @@
 					+"&max=" + max;
 		});
 		
+		//添加book到cart
+		$(".book_add button").click(function(){
+			//取bookid值
+			var bookId = $(this).attr("id");
+			//调用CartServlet
+			location = "CartServlet?method=addBookToCart&bookId=" + bookId;
+		});
+		
 	});
 </script>
 </head>
@@ -58,10 +66,15 @@
 				<button>查询</button>
 			</div>
 			<div style="text-align: center">
-				<span>您的购物车中有3件商品</span>
+			<c:if test="${not empty sessionScope.cart.totalCount && sessionScope.cart.totalCount != 0}">
+				<span>您的购物车中有${sessionScope.cart.totalCount}件商品</span>
+			</c:if>
+				<c:if test="${not empty sessionScope.title}">
 				<div>
-					您刚刚将<span style="color: red">时间简史</span>加入到了购物车中
+					您刚刚将<span style="color: red">${sessionScope.title}</span>加入到了购物车中
 				</div>
+				<c:remove var="title"></c:remove>
+				</c:if>
 			</div>
 			
 			<c:forEach items="${requestScope.page.list}" var="book">
@@ -91,7 +104,7 @@
 						<span class="sp2">${book.stock}</span>
 					</div>
 					<div class="book_add">
-						<button>加入购物车</button>
+						<button id="${book.id}">加入购物车</button>
 					</div>
 				</div>
 			</div>	
