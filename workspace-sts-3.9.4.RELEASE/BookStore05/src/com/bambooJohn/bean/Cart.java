@@ -1,13 +1,19 @@
 package com.bambooJohn.bean;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Cart {
+public class Cart implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//购物项集合,key:bookId,value:CartItem
 	Map<String, CartItem> map = new LinkedHashMap<>();
 	//总数量
@@ -98,11 +104,17 @@ public class Cart {
 
 	
 	public double getTotalAmount() {
-		double totalAmount = 0;
+		/*double totalAmount = 0;
 		for(CartItem cartItem : getCartItems()) {
 			totalAmount += cartItem.getAmount();
 		}
-		return totalAmount;
+		return totalAmount;*/
+		BigDecimal totalAmount = new BigDecimal("0");
+		for(CartItem cartItem : getCartItems()) {
+			BigDecimal amount = new BigDecimal(cartItem.getAmount() + "");
+			totalAmount = totalAmount.add(amount);
+		}
+		return totalAmount.doubleValue();
 	}
 
 	public void setTotalAmount(double totalAmount) {

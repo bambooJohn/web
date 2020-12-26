@@ -1,9 +1,14 @@
 package com.bambooJohn.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Page<T> {
+public class Page<T> implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int pageNo;						//当前页码				用户
 	private int totalPageNo;				//总页数=总条数/每页条数	计算
 	private int totalRecord;				//总条数				sql:select count(*) from books

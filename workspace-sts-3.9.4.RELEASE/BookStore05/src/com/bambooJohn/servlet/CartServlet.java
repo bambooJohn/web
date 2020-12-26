@@ -38,8 +38,11 @@ public class CartServlet extends BaseServlet {
 		session.setAttribute("cart", cart);
 		//将title存放到session域中
 		session.setAttribute("title", book.getTitle());
+		//获取Referer:跳转
+		String url = request.getHeader("Referer");
 		//跳转
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		//response.sendRedirect(request.getContextPath() + "/index.jsp");
+		response.sendRedirect(url);
 	}
 
 }

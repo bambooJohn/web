@@ -1,8 +1,14 @@
 package com.bambooJohn.bean;
 
-public class Book {
+import java.io.Serializable;
 
- 	private Integer id;
+public class Book implements Serializable{
+
+ 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
  	private String title; //书名
  	private String author; //作者
  	private double price; //价格
