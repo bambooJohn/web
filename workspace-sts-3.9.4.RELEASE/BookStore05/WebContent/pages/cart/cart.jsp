@@ -17,7 +17,11 @@
 	</div>
 	
 	<div id="main">
+	<c:if test="${empty sessionScope.cart.cartItems}">
+		<h1 align="center">购物车暂无数据，快来<a href="index.jsp" style="color:red">购物</a>呀</h1>
+	</c:if>
 	
+	<c:if test="${not empty sessionScope.cart.cartItems}">
 		<table>
 			<tr>
 				<td>商品名称</td>
@@ -32,7 +36,7 @@
 					<td>${cartItem.count}</td>
 					<td>${cartItem.book.price}</td>
 					<td>${cartItem.amount}</td>
-					<td><a href="#">删除</a></td>
+					<td><a href="CartServlet?method=delCartItem&bookId=${cartItem.book.id}">删除</a></td>
 				</tr>
 			</c:forEach>		
 			
@@ -45,7 +49,7 @@
 			<span class="cart_span"><a href="pages/cart/checkout.jsp">去结账</a></span>
 			<span class="cart_span"><a href="index.jsp">继续购物</a></span>
 		</div>
-	
+	</c:if>
 	</div>
 	
 	<div id="bottom">

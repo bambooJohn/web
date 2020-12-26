@@ -19,6 +19,13 @@ public class CartServlet extends BaseServlet {
 
 	private BookService bookService = new BookServiceImpl();
 	
+	/**
+	 * 添加Book到Cart
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	protected void addBookToCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		//取bookId值
@@ -44,5 +51,34 @@ public class CartServlet extends BaseServlet {
 		//response.sendRedirect(request.getContextPath() + "/index.jsp");
 		response.sendRedirect(url);
 	}
+	
+	/**
+	 * 删除购物项
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void delCartItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String bookId = request.getParameter("bookId");
+		
+		Book book = bookService.getBookById(bookId);
+		//调用Cart中的addBookToCart
+		//Cart存放Session域中
+		Cart cart = (Cart)session.getAttribute("cart");
+		if(cart != null) {
+			cart.delCartItem(book);
+		}
+		
+		//存放到Session域中
+		session.setAttribute("cart", cart);
+		//获取Referer:跳转
+		String url = request.getHeader("Referer");
+		//跳转
+		response.sendRedirect(request.getContextPath() + "/pages/cart/cart.jsp");
+
+	}
+	
 
 }

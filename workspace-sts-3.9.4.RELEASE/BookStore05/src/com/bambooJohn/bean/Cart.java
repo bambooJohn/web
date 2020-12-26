@@ -76,6 +76,13 @@ public class Cart implements Serializable{
 		map.put(book.getId() + "", cartItem);
 	}
 	
+	/**
+	 * 2.删除购物车
+	 * @return
+	 */
+	public void delCartItem(Book book) {
+		map.remove(book.getId() + "");
+	}
 	
 	public Map<String, CartItem> getMap() {
 		return map;
