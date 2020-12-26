@@ -80,5 +80,24 @@ public class CartServlet extends BaseServlet {
 
 	}
 	
+	
+	/**
+	 * 清空购物车
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void emptyCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//session.removeAttribute("cart");
+		Cart cart = (Cart)session.getAttribute("cart");
+		if(cart != null) {
+			cart.emptyCart();
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/pages/cart/cart.jsp");
+	}
+	
 
 }
