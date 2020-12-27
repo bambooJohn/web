@@ -7,6 +7,16 @@
 <title>购物车</title>
 <!-- <base href="http://localhost:8080/BookStore02/"> -->
 <%@ include file="/WEB-INF/include/base.jsp" %>
+<script type="text/javascript">
+	$(function(){
+		$(".cartItemCount").change(function(){
+			var bookId = $(this).attr("name");
+			var count = $(this).val();
+			//调用CartServlet
+			location="CartServlet?method=updateCartItem&bookId="+bookId+"&count="+count;
+		});
+	});
+</script>
 </head>
 <body>
 	
@@ -33,7 +43,9 @@
 			<c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">		
 				<tr>
 					<td>${cartItem.book.title}</td>
-					<td>${cartItem.count}</td>
+					<td>
+						<input class="cartItemCount" type="text" name="${cartItem.book.id}" value="${cartItem.count}" size="4" style="text-aline:center"/>
+					</td>
 					<td>${cartItem.book.price}</td>
 					<td>${cartItem.amount}</td>
 					<td><a href="CartServlet?method=delCartItem&bookId=${cartItem.book.id}">删除</a></td>

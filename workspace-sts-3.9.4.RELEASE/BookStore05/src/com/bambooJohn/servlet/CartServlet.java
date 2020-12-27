@@ -1,5 +1,7 @@
 package com.bambooJohn.servlet;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -100,4 +102,25 @@ public class CartServlet extends BaseServlet {
 	}
 	
 
+	/**
+	 * 修改购物车商品数量
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void updateCartItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		//取bookId,count值
+		String bookId = request.getParameter("bookId");
+		String count = request.getParameter("count");
+		//调用Cart
+		Cart cart = (Cart)session.getAttribute("cart");
+		if(cart != null) {
+			cart.updateCartItem(bookId, count);
+		}
+		//跳转
+		response.sendRedirect(request.getContextPath() + "/pages/cart/cart.jsp");
+	}
+	
 }

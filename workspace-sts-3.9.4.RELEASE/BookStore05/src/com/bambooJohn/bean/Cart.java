@@ -92,6 +92,24 @@ public class Cart implements Serializable{
 		map.clear();
 	}
 	
+	/**
+	 * 4.修改购物项数量
+	 * @param bookId
+	 * @param count
+	 */
+	public void updateCartItem(String bookId,String count) {
+		//通过bookId查找指定的CartItem
+		CartItem cartItem = map.get(bookId);
+		//更改购物项的数量
+		try {
+			cartItem.setCount(Integer.parseInt(count));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public Map<String, CartItem> getMap() {
 		return map;
 	}
