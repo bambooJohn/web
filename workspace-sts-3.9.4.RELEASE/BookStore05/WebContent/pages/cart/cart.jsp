@@ -10,10 +10,33 @@
 <script type="text/javascript">
 	$(function(){
 		$(".cartItemCount").change(function(){
-			var bookId = $(this).attr("name");
+			//获取bookId
+			var bookId = $(this).attr("id");
+			//获取输入数量
 			var count = $(this).val();
+			//获取库存
+			var stock = $(this).attr("name");
+			//获取默认值
+			var dValue = this.defaultValue;
+			//定义正则规则（非零的正整数）
+			var countReg = /^\+?[1-9][0-9]*$/;
+					
+			if(!countReg.test(count)){
+				alert("购买数量有误，请重新输入（非0正整数）！");
+				$(this).val(dValue);
+				return false;
+			}
+			
+			//验证库存
+			if(parseInt(count)>parseInt(stock)){
+				alert("购买数量超过库存，请重新输入（非0正整数）！");
+				$(this).val(dValue);
+				return false;
+			}
+				
 			//调用CartServlet
 			location="CartServlet?method=updateCartItem&bookId="+bookId+"&count="+count;
+			
 		});
 	});
 </script>
@@ -44,7 +67,7 @@
 				<tr>
 					<td>${cartItem.book.title}</td>
 					<td>
-						<input class="cartItemCount" type="text" name="${cartItem.book.id}" value="${cartItem.count}" size="4" style="text-aline:center"/>
+						<input class="cartItemCount" type="text" id="${cartItem.book.id}" name="${cartItem.book.stock}" value="${cartItem.count}" size="4" style="text-aline:center"/>
 					</td>
 					<td>${cartItem.book.price}</td>
 					<td>${cartItem.amount}</td>

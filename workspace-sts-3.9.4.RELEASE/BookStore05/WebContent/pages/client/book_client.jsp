@@ -66,15 +66,19 @@
 				<button>查询</button>
 			</div>
 			<div style="text-align: center">
-			<c:if test="${not empty sessionScope.cart.totalCount && sessionScope.cart.totalCount != 0}">
-				<span>您的购物车中有${sessionScope.cart.totalCount}件商品</span>
-			</c:if>
-				<c:if test="${not empty sessionScope.title}">
-				<div>
-					您刚刚将<span style="color: red">${sessionScope.title}</span>加入到了购物车中
-				</div>
-				<c:remove var="title"></c:remove>
+				<c:if test="${not empty sessionScope.cart.totalCount && sessionScope.cart.totalCount != 0}">
+					<span>您的购物车中有${sessionScope.cart.totalCount}件商品</span>
 				</c:if>
+				<div>
+					<c:if test="${not empty sessionScope.title}">
+						您刚刚将<span style="color: red">${sessionScope.title}</span>加入到了购物车中
+					<c:remove var="title" scope="session"></c:remove>
+					</c:if>
+					<c:if test="${not empty sessionScope.msg}">
+						<span style="color: red">${sessionScope.msg}</span>
+					<c:remove var="msg" scope="session"></c:remove>
+					</c:if>
+				</div>
 			</div>
 			
 			<c:forEach items="${requestScope.page.list}" var="book">

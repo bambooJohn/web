@@ -35,18 +35,31 @@ public class CartServlet extends BaseServlet {
 		//通过bookId获取Book(BookService)
 		Book book = bookService.getBookById(bookId);
 		//调用Cart中的addBookToCart
-		//Cart存放Session域中
+		//Cart
 		Cart cart = (Cart)session.getAttribute("cart");
 		
 		if(cart == null) {
 			cart = new Cart();
+			//存放Session域中
+			session.setAttribute("cart", cart);
 		}
 	
 		cart.addBookToCart(book);
-		//存放到Session域中
-		session.setAttribute("cart", cart);
-		//将title存放到session域中
-		session.setAttribute("title", book.getTitle());
+		//验证库存问题
+		int count = cart.getMap().get(bookId).getCount();
+		int stock = book.getStock();
+		
+		if(count > stock) {
+			//库存不足
+			session.setAttribute("msg", "库存不足，仅剩" + stock + "件商品");
+			//将最大库存设置为购买商品数量
+			cart.getMap().get(bookId).setCount(stock);
+			
+		}else {
+			//将title存放到session域中
+			session.setAttribute("title", book.getTitle());
+		}
+		
 		//获取Referer:跳转
 		String url = request.getHeader("Referer");
 		//跳转
