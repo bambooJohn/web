@@ -45,6 +45,13 @@ public class Demo {
 	 * 			* 响应
 	 * 		* 注意： filter的先后顺序，由web.xml中url的顺序决定。
 	 * 	* Url的配置规则
+	 * 		1. 精准配置：
+	 * 			* <url-pattern>/UserServlet</url-pattern>
+	 * 			* <servlet-name>UserServlet</servlet-name>
+	 * 		2. 模糊配置：包含“*”的配置，称之为模糊配置。
+	 * 			* 前置模糊：<url-pattern>*.jsp</url-pattern>
+	 * 			* 后置模糊：<url-pattern>/pages/user/*</url-pattern>
+	 * 			* 中间模糊（没有）
 	 * 	* HttpFilter
 	 * 
 	 * 生活中的过滤器
