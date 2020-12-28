@@ -10,25 +10,30 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 public class HelloWorldFilter implements Filter{
+	
+	public HelloWorldFilter() {
+		
+	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		
+		//System.out.println("Filter init()");
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
-		System.out.println("doFilter()!!!");
+		System.out.println("doFilter()放行前！！！");
 		chain.doFilter(request, response);
+		System.out.println("doFilter()放行后");
 	}
 
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+		//System.out.println("destroy()");
 	}
 
 }
