@@ -16,8 +16,6 @@ public class BaseServlet extends HttpServlet {
     
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
 		//登录 || 注册
 		String method = request.getParameter("method");
 		//使用反射通过获取方法名动态获取方法对象，从而执行该方法

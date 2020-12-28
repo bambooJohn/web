@@ -69,7 +69,7 @@ public class BookServlet extends BaseServlet {
 	protected void delBookById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String bookId = request.getParameter("bookId");
 		bookService.delBookById(bookId);
-		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
+		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getBookByPage");
 	}
 	
 	/**
@@ -110,7 +110,7 @@ public class BookServlet extends BaseServlet {
 			bookService.updateBook(new Book(Integer.parseInt(id),title,author,Double.parseDouble(price),Integer.parseInt(sales),Integer.parseInt(stock),null));
 		}
 		//跳转
-		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getAllBooks");
+		response.sendRedirect(request.getContextPath() + "/BookServlet?method=getBookByPage");
 	}
 	
 	/**
