@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="UserServlet">UserServlet</a>
+	<a href="UserServlet">UserServlet</a><br>
+	<a href="HttpFilterTestFilter">HttpFilterTestFilter</a>
 </body>
 </html>
