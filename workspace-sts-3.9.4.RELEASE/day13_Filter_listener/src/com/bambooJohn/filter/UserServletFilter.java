@@ -18,6 +18,7 @@ public class UserServletFilter implements Filter {
      */
     public UserServletFilter() {
         // TODO Auto-generated constructor stub
+    	System.out.println("UserServletFilter构造器");
     }
 
 	/**

@@ -12,13 +12,13 @@ import javax.servlet.ServletResponse;
 public class HelloWorldFilter implements Filter{
 	
 	public HelloWorldFilter() {
-		
+		System.out.println("HelloWorldFilter构造器");
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		//System.out.println("Filter init()");
+		System.out.println("Filter init()");
 	}
 
 	@Override
