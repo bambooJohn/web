@@ -75,6 +75,13 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 		return page;
 	}
 
+	@Override
+	public void updateBook(int sales, int stock, int id) {
+		// TODO Auto-generated method stub
+		String sql = "update books set sales = ?,stock = ? where id = ?";
+		update(sql, sales,stock,id);
+	}
+
 	
 
 }

@@ -60,4 +60,10 @@ public interface BookDao {
 	 */
 	public Page<Book> getBookByPageAndPrice(Page<Book> page,double min,double max);
 	
+	/**
+	 * 修改book
+	 * 		sql:update books set sales = ?,stock = ? where id = ?
+	 * @param book
+	 */
+	public void updateBook(int sales,int stock,int id);
 }

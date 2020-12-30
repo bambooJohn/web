@@ -1,7 +1,5 @@
 package com.bambooJohn.servlet;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
