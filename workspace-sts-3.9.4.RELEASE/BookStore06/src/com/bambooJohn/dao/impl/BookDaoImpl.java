@@ -86,7 +86,7 @@ public class BookDaoImpl extends BaseDao<Book> implements BookDao {
 	public void updateBook(Object[][] params) {
 		// TODO Auto-generated method stub
 		String sql = "update books set sales = ?,stock = ? where id = ?";
-		update(sql, params);
+		batchUpdate(sql, params);
 	}
 
 	
