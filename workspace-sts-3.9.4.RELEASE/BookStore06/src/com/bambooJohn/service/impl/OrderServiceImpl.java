@@ -31,6 +31,27 @@ public class OrderServiceImpl implements OrderService {
 	 * 	3.更改相应book的库存和销量
 	 * 	4.清空购物车
 	 * 
+	 * 批处理优化结账
+	 * 	* 1. BaseDao:添加batchUpdate()
+	 * 		* queryRunner.batch(connection,sql,params)
+	 * 		* params:Object[][]
+	 * 		* 一维：次数
+	 * 		* 二维：参数
+	 * 	* 2. OrderItemDao添加批处理接口
+	 * 	* 3. BookDao添加批处理接口
+	 * 	* 4. OrderServiceImpl调用dao批处理接口
+	 * 	*		* Object[][] orderItemParams = new Object[cartItems.size()][];
+	 * 			  Object[][] bookParams = new Object[cartItems.size()][];
+	 * 			* orderItemParams[i] = new Object[]{参数顺序};
+	 * 
+	 * 使用事务优化结账
+	 * 		* 开启事务：connection.setAutoCommit(false);|commit(); rollback()
+	 * 			1. 共用同一个connection
+	 * 				* ThreadLocal管理Connection
+	 * 				* 删除BaseDao中的JDBCUtils.releaseConnection(connection);
+	 * 			2. 统一处理异常（Filter）
+	 * 				* 抛出BaseDao和BaseServlet中的异常，统一在Filter中处理
+	 * 				* 统一开启事务，提交|回滚事务。
 	 */
 	@Override
 	public String createOrder(Cart cart,User user) {

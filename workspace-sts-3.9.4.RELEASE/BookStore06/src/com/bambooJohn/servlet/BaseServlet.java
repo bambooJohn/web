@@ -24,7 +24,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 			declaredMethod.invoke(this, request,response);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		
 		/*if("login".equals(method)) {

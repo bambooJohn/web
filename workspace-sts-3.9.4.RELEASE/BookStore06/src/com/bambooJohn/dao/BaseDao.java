@@ -57,9 +57,10 @@ public class BaseDao<T> {
 		try {
 			count = queryRunner.update(connection, sql, params);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new RuntimeException(e);
 		} finally {
-			JDBCUtils.releaseConnection(connection);
+			//JDBCUtils.releaseConnection(connection);
 		}
 		return count;
 	}
@@ -80,9 +81,10 @@ public class BaseDao<T> {
 		try {
 			queryRunner.batch(connection, sql, params);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new RuntimeException(e);
 		} finally {
-			JDBCUtils.releaseConnection(connection);
+			//JDBCUtils.releaseConnection(connection);
 		}
 		
 	}
@@ -102,9 +104,10 @@ public class BaseDao<T> {
 			t = queryRunner.query(connection, sql, new BeanHandler<T>(type),
 					params);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new RuntimeException(e);
 		} finally {
-			JDBCUtils.releaseConnection(connection);
+			//JDBCUtils.releaseConnection(connection);
 		}
 		return t;
 	}
@@ -123,9 +126,10 @@ public class BaseDao<T> {
 			list = queryRunner.query(connection, sql, new BeanListHandler<T>(
 					type), params);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new RuntimeException(e);
 		} finally {
-			JDBCUtils.releaseConnection(connection);
+			//JDBCUtils.releaseConnection(connection);
 		}
 		return list;
 	}
@@ -142,9 +146,10 @@ public class BaseDao<T> {
 		try {
 			o = queryRunner.query(connection, sql, new ScalarHandler<>(), params);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			throw new RuntimeException(e);
 		} finally {
-			JDBCUtils.releaseConnection(connection);
+			//JDBCUtils.releaseConnection(connection);
 		}
 		return o;
 	}
