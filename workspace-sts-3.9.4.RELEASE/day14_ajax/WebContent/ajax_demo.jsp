@@ -9,18 +9,31 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btnPost").click(function(){
-			$.ajax({
+			$.post("AjaxDemo","name=John&location=Boston",function(msg){
+			     alert( "Data Saved: " + msg );
+			   });
+			
+			/* $.ajax({
 				   type: "POST",
 				   url: "AjaxDemo",
 				   data: "name=John&location=Boston",
 				   success: function(msg){
 				     alert( "Data Saved: " + msg );
 				   }
-				});
+				}); */
 		});
 		
 		$("#btnGet").click(function(){
-			$.ajax({
+			
+			$.getJSON("AjaxDemo",{"name":"zhangsan","age":18},function(msg){
+				alert("msg:" + msg.name);
+			});
+			
+			/* $.get("AjaxDemo",{"name":"zhangsan","age":18},function(msg){
+				alert("msg:" + msg.name);
+			},"json"); */
+			
+			/* $.ajax({
 				type:"get",
 				url:"AjaxDemo",
 				data:{"name":"zhangsan","age":18},
@@ -31,7 +44,7 @@
 				error:function(){
 					alert("error");
 				}
-			});
+			}); */
 		});
 		
 	});

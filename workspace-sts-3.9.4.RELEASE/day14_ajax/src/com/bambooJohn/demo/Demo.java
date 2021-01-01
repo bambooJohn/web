@@ -28,9 +28,10 @@ public class Demo {
 	 * 					error:fn(回调函数：请求失败时回调)
 	 * 				});
 	 * 
-	 * 
-	 * 
-	 * 
+	 * Ajax简写：
+	 * 		$.get(url, [data], [callback], [type])
+	 * 		$.post(url, [data], [callback], [type])
+	 * 		$.getJSON(url, [data], [callback])
 	 */
 	
 }
