@@ -18,7 +18,15 @@ public class Demo {
 	 * 使用
 	 * 		js->ajax
 	 * 		jQuery->ajax(常用)
-	 * 
+	 * 			* 语法
+	 * 				$.ajax({
+	 * 					type:"请求方式:get|post",
+	 * 					url:"请求路径",
+	 * 					data:"参数",
+	 * 					dataType:预期服务器返回的数据类型，如：xml|json|text
+	 * 					success:fn(回调函数：请求成功时回调),
+	 * 					error:fn(回调函数：请求失败时回调)
+	 * 				});
 	 * 
 	 * 
 	 * 

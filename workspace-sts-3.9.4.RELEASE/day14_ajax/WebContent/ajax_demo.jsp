@@ -8,7 +8,7 @@
 <script type="text/javascript" src="script/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$("#click").click(function(){
+		$("#btnPost").click(function(){
 			$.ajax({
 				   type: "POST",
 				   url: "AjaxDemo",
@@ -18,10 +18,27 @@
 				   }
 				});
 		});
+		
+		$("#btnGet").click(function(){
+			$.ajax({
+				type:"get",
+				url:"AjaxDemo",
+				data:{"name":"zhangsan","age":18},
+				dataType:"json",
+				success:function(msg){
+					alert("msg:" + msg.name);
+				},
+				error:function(){
+					alert("error");
+				}
+			});
+		});
+		
 	});
 </script>
 </head>
 <body>
-	<button id="click">click</button>
+	<button id="btnPost">clickPost</button>
+	<button id="btnGet">clickGet</button>
 </body>
 </html>
