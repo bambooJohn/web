@@ -35,6 +35,21 @@
 			$(this).attr("src","code.jpg?random=" + Math.random());
 		});
 		
+		//ajax校验用户名是否存在
+		$("#username").change(function(){
+			//取username值
+			var uname = $(this).val();
+			//ajax异步请求
+			$.get("UserServlet?method=checkUserName",{"uname":uname},function(msg){
+				//$(".errorMsg").html(msg);
+				if($.trim(msg)=="true"){
+					$(".errorMsg").html("用户名已存在，请重新输入！").css("color","red");
+				}else{
+					$(".errorMsg").html("用户名可用!").css("color","green");
+				}
+			});
+		});
+		
 	});
 
 

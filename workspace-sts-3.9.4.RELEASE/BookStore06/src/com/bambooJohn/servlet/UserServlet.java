@@ -1,6 +1,7 @@
 package com.bambooJohn.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 import javax.servlet.ServletException;
@@ -100,6 +101,29 @@ public class UserServlet extends BaseServlet {
 		request.getSession().removeAttribute("user");
 		//跳转首页
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
+	}
+	
+	
+	/**
+	 * ajax校验用户名
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	protected void checkUserName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter writer = response.getWriter();
+		//取username值
+		String uname = request.getParameter("uname");
+		//调用service
+		boolean yOn = userService.checkUserName(uname);
+		//响应数据（回调函数）
+		/*if(yOn) {
+			writer.write("用户名已存在");
+		}else {
+			writer.write("用户名可用");
+		}*/
+		writer.print(yOn);
 	}
 	
 }
