@@ -35,7 +35,15 @@
 			}
 				
 			//调用CartServlet
-			location="CartServlet?method=updateCartItem&bookId="+bookId+"&count="+count;
+		//	location="CartServlet?method=updateCartItem&bookId="+bookId+"&count="+count;
+			var $amount = $(this).parent().next().next();
+			//ajax异步请求
+			$.getJSON("CartServlet?method=updateCartItem",{"bookId":bookId,"count":count},function(map){
+				//将数据显示到指定位置
+				$(".b_count").html(map.totalCount);
+				$(".b_price").html(map.totalAmount);
+				$amount.html(map.amount);
+			});
 			
 		});
 	});

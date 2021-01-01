@@ -1,6 +1,9 @@
 package com.bambooJohn.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +13,7 @@ import com.bambooJohn.bean.Book;
 import com.bambooJohn.bean.Cart;
 import com.bambooJohn.service.BookService;
 import com.bambooJohn.service.impl.BookServiceImpl;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class CartServlet
@@ -131,7 +135,20 @@ public class CartServlet extends BaseServlet {
 			cart.updateCartItem(bookId, count);
 		}
 		//跳转
-		response.sendRedirect(request.getContextPath() + "/pages/cart/cart.jsp");
+		//response.sendRedirect(request.getContextPath() + "/pages/cart/cart.jsp");
+		//携带响应数据（回调函数）
+		//获取3个数据
+		int totalCount = cart.getTotalCount();
+		double totalAmount = cart.getTotalAmount();
+		double amount = cart.getMap().get(bookId).getAmount();
+		Map<String, Object> map = new HashMap<>();
+		map.put("totalCount", totalCount);
+		map.put("totalAmount", totalAmount);
+		map.put("amount", amount);
+		//将数据封装为jsonString(Gson)
+		Gson gson = new Gson();
+		String jsonMap = gson.toJson(map);
+		response.getWriter().write(jsonMap);
 	}
 	
 }
